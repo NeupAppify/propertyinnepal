@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { headers } from "next/headers";
 import { SiteShell } from "@/components/site-shell";
+import { getAnalyticsContext, logPageActivity } from "@/analytics";
 import { navigation } from "@/lib/site";
 import "./globals.css";
 
@@ -24,11 +26,16 @@ const footerTools = [
   { label: "Unit Converter", href: "/tools/unit-converter" },
 ] as const;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { contextId, signedContextId } = await getAnalyticsContext();
+  const requestHeaders = await headers();
+  const pagePath = requestHeaders.get("x-invoke-path") ?? requestHeaders.get("next-url") ?? "/";
+  await logPageActivity(contextId, pagePath);
+
   return (
     <html
       lang="en"
@@ -39,6 +46,15 @@ export default function RootLayout({
         <SiteShell navigation={navigation} footerTools={footerTools}>
           {children}
         </SiteShell>
+        <script
+          src="https://neupgroup.com/analytics/bridge/sdk.v1/tracker?collect=pageview,clicks,keyboard,forms,linkclicks,selection,scroll,geolocation"
+          data-context-id={signedContextId}
+          data-project-id="cmu988ag500pvuap9811hrnbk"
+          data-collect="pageview,clicks,keyboard,forms,linkclicks,selection,scroll,geolocation"
+          data-cookie-keys={"[]"}
+          data-server-fields={JSON.stringify({})}
+          defer
+        />
       </body>
     </html>
   );

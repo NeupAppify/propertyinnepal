@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import sites from "@neup/logica/sites";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -12,110 +13,19 @@ type SocialLinkKey = "facebook" | "linkedin" | "instagram" | "tiktok" | "youtube
 type TeamMember = {
   name: string;
   role: string;
-  id: string;
   image: string;
   socials: Partial<Record<SocialLinkKey, string>>;
 };
 
-const teamMembers: readonly TeamMember[] = [
-  {
-    name: "Ramesh Barudi",
-    role: "CEO / Founder",
-    id: "PIN901",
-    image:
-      "https://api.propertyinnepal.com.np/storage/4311/dw9B8TrvPBdJWKMdRRkV0GfEgtXMt5-metaV2hhdHNBcHAgSW1hZ2UgMjAyNS0wOC0xNyBhdCAxNi4wOS40NF84NGFhMmRmMS5qcGc=-.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/share/15Jb8Tmu9C/?mibextid=wwXIfr",
-      linkedin: "https://www.facebook.com/share/15Jb8Tmu9C/?mibextid=wwXIfr",
-      instagram:
-        "https://www.instagram.com/rameshbarudiofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-      tiktok: "https://www.tiktok.com/@rameshbarudi?is_from_webapp=1&sender_device=pc",
-      youtube: "https://youtu.be/u_madL0gaRo?si=or-KB6y-5Fh09v5c",
-    },
-  },
-  {
-    name: "Sapana Seni",
-    role: "Director",
-    id: "PIN902",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6518/oAlCTkEL0Joeo93LNKPjq5OTCymVvO-metaMTAwMDA4NTc0OS5wbmc=-.png",
+export default async function TeamPage() {
+  const teamResponse = await sites().members.get();
+  const teamMembers: TeamMember[] = (teamResponse.body.members ?? []).map((member) => ({
+    name: member.name,
+    role: member.role,
+    image: "",
     socials: {},
-  },
-  {
-    name: "Arjun B.K",
-    role: "Senior Realtor",
-    id: "PIN903",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6463/4MnhmTPgCnX9CK7NoxfxjSCOAVOdEz-metaMTAwMDA4NDQ4Mi5wbmc=-.png",
-    socials: {},
-  },
-  {
-    name: "Deepti Neupane",
-    role: "Sales / Operation Manager",
-    id: "PIN904",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6377/QRCUgJOResQMrBrsAAPF84VbWjnqlS-metaMTAwMDA4MzUxNC5qcGc=-.jpg",
-    socials: {},
-  },
-  {
-    name: "Sujan Bhandari",
-    role: "Digital Marketing",
-    id: "PIN905",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6470/uRN7TUuYlPrXBwz4s1Ygd6SQGFwIoo-metaZmlsZV8wMDAwMDAwMGRhOTg3MjA4YTMzYTUxYWEwZDgxZWI3ZC1yZW1vdmViZy1wcmV2aWV3LnBuZw==-.png",
-    socials: {},
-  },
-  {
-    name: "Mausam Thapa",
-    role: "Finance | Account Department",
-    id: "912",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6517/3m1Aqlsvx2uG08xgWutdFA49dnsLOv-metaMTAwMDA4NTc0OC5wbmc=-.png",
-    socials: {},
-  },
-  {
-    name: "Bikram Kunwar",
-    role: "Realtor",
-    id: "PIN906",
-    image:
-      "https://api.propertyinnepal.com.np/storage/2558/omOHqDpvFYgpfnm8bwWqoJxSzdeLJn-metaQklLUkFNIFNJUi5qcGc=-.jpg",
-    socials: {},
-  },
-  {
-    name: "Birju B.K",
-    role: "Property Consultant - Lalitpur",
-    id: "PIN907",
-    image:
-      "https://api.propertyinnepal.com.np/storage/2557/53kQhAu54cOvDMkQIQIQPtkt6JhZ2R-metaYmlyanUgc2lyLkpQRw==-.jpg",
-    socials: {},
-  },
-  {
-    name: "Pushkar Purkuti",
-    role: "Realtor",
-    id: "PIN908",
-    image:
-      "https://api.propertyinnepal.com.np/storage/2553/u1nEBZoZzIivLteW0x9zPpamMd684l-metaUFVTS0FSIC5qcGc=-.jpg",
-    socials: {},
-  },
-  {
-    name: "Samir Lama",
-    role: "Videographer / Editor",
-    id: "910",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6417/slLamdi3ISoWVzBTEE5heEv2iRQT3f-metaMTAwMDA4Mzk1My5wbmc=-.png",
-    socials: {},
-  },
-  {
-    name: "Saru Lama",
-    role: "Video Host",
-    id: "911",
-    image:
-      "https://api.propertyinnepal.com.np/storage/6418/H5I7UzF1rEg121r7LqZLmJlI584bT0-metaMTAwMDA4Mzk1Ny5wbmc=-.png",
-    socials: {},
-  },
-] as const;
+  }));
 
-export default function TeamPage() {
   return (
     <>
       <section className="mx-auto max-w-[1440px] px-6 pb-12 pt-12 lg:px-8 lg:pt-16">
@@ -134,31 +44,32 @@ export default function TeamPage() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-6 pb-12 lg:px-8 lg:pb-16">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((member) => (
             <article
-              key={`${member.name}-${member.id}`}
-              className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+              key={member.name}
+              className="group"
             >
-              <img
-                src={member.image}
-                alt={member.name}
-                width={640}
-                height={640}
-                loading="lazy"
-                decoding="async"
-                className="mb-4 aspect-square w-full rounded-xl border border-slate-200 bg-slate-100 object-cover object-top transition duration-300 group-hover:scale-[1.02]"
-              />
-              <h2 className="mt-3 text-xl font-semibold text-slate-950 transition-colors duration-200 group-hover:text-brand-deep">
-                {member.name}
-              </h2>
-              <p className="mt-2 text-sm font-medium text-slate-600">
-                {member.role}
-              </p>
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <div className="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700">
-                  ID: {member.id}
-                </div>
+              <div className="relative aspect-[4/4.5] overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-100 shadow-sm transition-colors duration-300 group-hover:border-brand-deep group-hover:ring-2 group-hover:ring-brand-deep/30">
+                <img
+                  src={member.image || "/logo.png"}
+                  alt={member.name}
+                  width={640}
+                  height={720}
+                  loading="lazy"
+                  decoding="async"
+                  className={`h-full w-full object-cover object-top ${member.image ? "" : "bg-white object-contain p-12 opacity-50"}`}
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/35 to-transparent" />
+              </div>
+              <div className="mt-4">
+                <h2 className="relative inline-block text-lg font-semibold leading-6 text-slate-950 transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-brand-deep after:transition-transform after:duration-300 group-hover:text-brand-deep group-hover:after:origin-left group-hover:after:scale-x-100">
+                  {member.name}
+                </h2>
+                <p className="mt-1.5 text-sm font-medium leading-5 text-slate-500 transition-colors duration-300 group-hover:text-brand-deep">
+                  {member.role}
+                </p>
+                <div className="mt-4 flex min-h-8 items-center justify-start gap-3">
                 {Object.entries(member.socials).length > 0 ? (
                   <div className="flex flex-wrap justify-end gap-2">
                     {member.socials.facebook ? (
@@ -230,6 +141,7 @@ export default function TeamPage() {
                 ) : (
                   <div />
                 )}
+                </div>
               </div>
             </article>
           ))}
