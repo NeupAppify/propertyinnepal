@@ -1,18 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/neupgroup/neup.sites/main/schemas/application.json",
-    "basepath": "",
     "identity": {
         "name": "Good Deal",
         "@comment:name": "Application name used for identification.",
-        "name:translation": {
-            "en": "Good Deal",
-            "ne": "गुड डिल"
-        },
-        "@comment:name:translation": "Application name's array translations for different languages.",
         "version": "1.0.0.00",
         "@comment:version": "Published application version. The final counter tracks updates.",
         "applicationId": "gooddeal",
-        "@comment:applicationId": "Unique identifier for the application. Used for internal tracking and management."
+        "@comment:applicationId": "Unique identifier for the application. Used for internal tracking and management.",
+        "poweredBy": "neup.sites/neup.cloud",
+        "@comment:poweredBy": "Indicates the framework or platform powering the application."
     },
     "design": {
         "color": {
@@ -75,117 +71,112 @@
             "customStyles": {}
         }
     },
-    "features": {
-        "database": {
-            "isRequired": false,
-            "type": "postgresql"
+    "modules": [
+        {
+            "name": "neup.analytics",
+            "@comment:name": "Analytics module for tracking user interactions and application performance.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "projectId": "cmu988ag500pvuap9811hrnbk",
+            "@comment:projectId": "Unique identifier for the project within the analytics module.",
+            "packages": {
+                "class-variance-authority": "^0.7.1",
+                "clsx": "^2.1.1",
+                "next": "16.2.6",
+                "react": "19.2.4",
+                "react-dom": "19.2.4",
+                "tailwind-merge": "^3.6.0"
+            },
+            "@comment:packages": "List of packages required by the analytics module. Each package should include a name and version."
         },
-        "fileStorage": {
-            "isRequired": false,
-            "type": "local"
+        {
+            "name": "neup.sites",
+            "@comment:name": "Sites module for managing and rendering web pages and assets.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
+            "@comment:projectId": "Unique identifier for the project within the sites module."
         },
-        "notifications": {
-            "isRequired": false,
-            "type": "push"
-        }
-    },
-    "account": {
-        "isRequired": true,
-        "accountSystem": "neupId/emailpass/userpass"
-    },
-    "logica": {
-        "requiredModules": [
-            {
-                "name": "analytics",
-                "@comment:name": "Analytics module for tracking user interactions and application performance.",
-                "isRequired": true,
-                "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-                "projectId": "cmu988ag500pvuap9811hrnbk",
-                "@comment:projectId": "Unique identifier for the project within the analytics module."
-            },
-            {
-                "name": "sites",
-                "@comment:name": "Sites module for managing and rendering web pages and assets.",
-                "isRequired": true,
-                "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-                "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
-                "@comment:projectId": "Unique identifier for the project within the sites module."
-            },
-            {
-                "name": "database",
-                "@comment:name": "Database module for data storage and retrieval.",
-                "isRequired": true,
-                "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-                "type": "postgresql",
-                "@comment:type": "Specifies the type of database used in the application."
-            },
-            {
-                "name": "fileStorage",
-                "@comment:name": "File storage module for handling file uploads and downloads.",
-                "isRequired": true,
-                "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-                "type": "local/neupdrive/static",
-                "@comment:type": "Specifies the type of file storage system used in the application.",
-                "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
-                "@comment:projectId": "Unique identifier for the project within the file storage module."
-            },
-            {
-                "name": "notifications",
-                "@comment:name": "Notifications module for sending alerts and messages to users.",
-                "isRequired": true,
-                "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-                "type": "push",
-                "@comment:type": "Specifies the type of notification system used in the application.",
-                "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
-                "@comment:projectId": "Unique identifier for the project within the notifications module."
-            },
-            {
-                "name": "account",
-                "@comment:name": "Account module for managing user accounts and authentication.",
-                "isRequired": true,
-                "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-                "accountSystem": "neupId/emailpass/userpass",
-                "@comment:accountSystem": "Specifies the account system used for user authentication and management.",
-                "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
-                "@comment:projectId": "Unique identifier for the project within the account module."
+        {
+            "name": "database",
+            "@comment:name": "Database module for data storage and retrieval.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "type": "postgresql",
+            "@comment:type": "Specifies the type of database used in the application."
+        },
+        {
+            "name": "neup.drive",
+            "@comment:name": "File storage module for handling file uploads and downloads.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
+            "@comment:projectId": "Unique identifier for the project within the file storage module.",
+            "relocation": {
+                "from": "",
+                "@comment:from": "Base URL generated by the application.",
+                "to": "",
+                "@comment:to": "Replacement base path for rendered assets."
             }
-        ]
-    },
+        },
+        {
+            "name": "notifications",
+            "@comment:name": "Notifications module for sending alerts and messages to users.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "methods": [
+                "push",
+                "mail",
+                "toast"
+            ],
+            "@comment:methods": "Specifies the methods of notification delivery used in the application.",
+            "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
+            "@comment:projectId": "Unique identifier for the project within the notifications module."
+        },
+        {
+            "name": "account",
+            "@comment:name": "Account module for managing user accounts and authentication.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "accountSystem": "neupId/emailpass/userpass",
+            "@comment:accountSystem": "Specifies the account system used for user authentication and management.",
+            "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
+            "@comment:projectId": "Unique identifier for the project within the account module."
+        }
+    ],
     "permissions": [],
     "@comment:permissions": "List of permissions required by the application. Each permission should include a name, description, and whether it is required.",
-    "storage": {
-        "type": "local",
-        "@comment:type": "Specifies the type of storage system used in the application.",
-        "driveRelocation": {
-            "from": "",
-            "@comment:from": "Base URL generated by the application.",
-            "to": "",
-            "@comment:to": "Replacement base path for rendered assets."
-        }
-    },
     "@comment:storage": "Configuration for the application's storage system.",
-    "platforms": {
-        "web": {
+    "platforms": [
+        {
+            "type": "web",
+            "@comment:type": "Specifies the platform type. Options include web, android, and ios.",
             "exists": true,
             "@comment:exists": "Indicates if the web platform is supported by the application.",
-            "location": "https://neupgroup.com",
-            "@comment:location": "URL where the web application is hosted.",
+            "domain": "https://neupgroup.com",
+            "@comment:domain": "Domain at which web application will be hosted.",
+            "basepath": "/",
+            "@comment:basepath": "Base path for the web application. This is the root path from which the application will be served, dont define this if its hosted on a single subdomain or domain.",
             "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
             "@comment:projectId": "Unique identifier for the project within the web platform."
         },
-        "android": {
+        {
+            "type": "android",
+            "@comment:type": "Specifies the platform type. Options include web, android, and ios.",
             "exists": false,
             "@comment:exists": "Indicates if the Android platform is supported by the application.",
             "packageName": "com.neupgroup.app",
             "@comment:packageName": "The package name for the Android application."
         },
-        "ios": {
+        {
+            "type": "ios",
+            "@comment:type": "Specifies the platform type. Options include web, android, and ios.",
             "exists": false,
             "@comment:exists": "Indicates if the iOS platform is supported by the application.",
             "bundleIdentifier": "com.neupgroup.app",
             "@comment:bundleIdentifier": "The bundle identifier for the iOS application."
         }
-    },
+    ],
     "assets": {
         "logo": {
             "main": "/assets/logo.png",
@@ -205,11 +196,11 @@
         },
         "favicon": {
             "path": "/assets/favicon.ico",
-            "altText": "Neup.Group Favicon"
+            "altText": "Neup.Group's Favicon"
         },
         "splashScreen": {
             "path": "/assets/splash.png",
-            "altText": "Neup.Group Splash Screen"
+            "altText": "Neup.Group's Splash Screen"
         }
     }
 }
