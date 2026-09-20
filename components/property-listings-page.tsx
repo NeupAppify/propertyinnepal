@@ -69,7 +69,7 @@ export function PropertyListingsPage({
               <PropertyCardS1
                 key={property.id}
                 className="h-full shadow-none"
-                href={`/properties/${property.slug}`}
+                href={`/properties/${property.id}`}
                 imageAlt={getDisplayValue(property.name)}
                 imageSrc={property.images?.[0] ?? "/logo.png"}
                 title={getDisplayValue(property.name)}

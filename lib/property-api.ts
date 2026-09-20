@@ -406,7 +406,7 @@ function getTeamImage(record: BridgeRecord) {
   return asOptionalString(listedBy.displayImage);
 }
 
-function mapProperty(record: unknown): PropertyItem {
+export function mapProperty(record: unknown): PropertyItem {
   const property = asRecord(record);
   const source = getSource(property);
   const location = getLocation(property);
@@ -509,36 +509,6 @@ export async function fetchPropertyListings({
     totalItems,
     totalPages,
   };
-}
-
-export async function fetchPropertyBySlug(slug: string) {
-  // Slug suffixes contain legacy listing codes, not the estate API's UUIDs.
-  // Search indexes title words, so remove the numeric suffixes and hyphens.
-  const search = slug.replace(/(?:-\d+)+$/, "").replace(/-/g, " ").trim();
-  if (!search) return null;
-  const response = await estate.property.search({
-    limit: 20,
-    search,
-  });
-  if (!response.ok) {
-    throw new Error(`Failed to find property: ${response.status}`);
-  }
-  const body = asRecord(response.body);
-  const properties = Array.isArray(body.properties) ? body.properties : [];
-  const exactMatch = properties.find((property) => asRecord(property).slug === slug);
-
-  if (!exactMatch) return null;
-
-  const matchedProperty = asRecord(exactMatch);
-  const matchedPropertyId = matchedProperty.id;
-  if (typeof matchedPropertyId !== "string" && typeof matchedPropertyId !== "number") {
-    return mapProperty(exactMatch);
-  }
-
-  const detailResponse = await estate.property(String(matchedPropertyId)).get();
-  const detailBody = asRecord(detailResponse.body);
-  const detailRecord = detailBody.property ?? detailBody.data;
-  return detailResponse.ok && detailRecord ? mapProperty(detailRecord) : mapProperty(exactMatch);
 }
 
 export async function fetchPremiumProperties(page = 1) {

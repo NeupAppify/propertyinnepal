@@ -257,8 +257,8 @@ function PremiumPropertyCard({
     .filter(Boolean)
     .join(", ");
   const price = formatPropertyPrice(property.price, property.on_calling);
-  const propertyHref = property.slug?.trim()
-    ? `/properties/${property.slug}`
+  const propertyHref = property.id?.trim()
+    ? `/properties/${property.id}`
     : undefined;
 
   return (

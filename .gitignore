@@ -44,7 +44,8 @@ next-env.d.ts
 certificates
 
 # Neup Standard Files
-core
-neup.core
-logica
-neup.logica
+@neup/core
+@neup/logica
+@neup/domain
+@neup/components
+@neup/setup

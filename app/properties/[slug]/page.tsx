@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { estate } from "@neup/logica/estate";
 import { DragScrollCarousel } from "@/components/drag-scroll-carousel";
 import PropertyCardS1 from "@/components/estate/propertyCard.s1";
 import { PropertyAgentContactCard } from "@/components/property-agent-contact-card";
@@ -11,7 +12,7 @@ import { PropertyPhotoGallery } from "@/components/property-photo-gallery";
 import { PropertyShareButton } from "@/components/property-share-button";
 import {
   fetchPremiumProperties,
-  fetchPropertyBySlug,
+  mapProperty,
   formatPropertyPrice,
   type PropertyFeature,
   type PropertyItem,
@@ -28,13 +29,18 @@ export async function generateMetadata({
   params,
 }: PropertyDetailsPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const property = await fetchPropertyBySlug(slug);
+  const response = await estate.property(slug).get();
+  if (!response.ok && response.status !== 404) {
+    throw new Error(`Failed to fetch property: ${response.status}`);
+  }
 
-  if (!property) {
+  if (!response.body?.property) {
     return {
       title: "Property Not Found",
     };
   }
+
+  const property = mapProperty(response.body.property);
 
   return {
     title: property.name,
@@ -383,7 +389,7 @@ function RecommendedPropertyCard({ property }: { property: PropertyItem }) {
   return (
     <PropertyCardS1
       className="h-full"
-      href={`/properties/${property.slug}`}
+      href={`/properties/${property.id}`}
       imageAlt={property.name}
       imageSrc={property.images?.[0] ?? "/logo.png"}
       agentImageSrc={property.team_image}
@@ -402,14 +408,18 @@ function RecommendedPropertyCard({ property }: { property: PropertyItem }) {
 
 export default async function PropertyDetailsPage({ params }: PropertyDetailsPageProps) {
   const { slug } = await params;
-  const [property, recommendedPayload] = await Promise.all([
-    fetchPropertyBySlug(slug),
+  const [response, recommendedPayload] = await Promise.all([
+    estate.property(slug).get(),
     fetchPremiumProperties(),
   ]);
 
-  if (!property) {
+  if (!response.ok && response.status !== 404) {
+    throw new Error(`Failed to fetch property: ${response.status}`);
+  }
+  if (!response.body?.property) {
     notFound();
   }
+  const property = mapProperty(response.body.property);
 
   const recommendedProperties = recommendedPayload.data
     .filter((item) => item.id !== property.id && item.slug !== property.slug)
