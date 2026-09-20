@@ -142,6 +142,17 @@
             "@comment:accountSystem": "Specifies the account system used for user authentication and management.",
             "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
             "@comment:projectId": "Unique identifier for the project within the account module."
+        },
+        {
+            "name": "neup.estate",
+            "@comment:name": "Estate module for property and listing data access.",
+            "isRequired": true,
+            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
+            "permissions": [
+                "estate.listings.read",
+                "estate.listings.create"
+            ],
+            "@comment:permissions": "Specifies the permissions required by the estate module. Each permission should be a string representing the type of permission needed."
         }
     ],
     "platforms": [
