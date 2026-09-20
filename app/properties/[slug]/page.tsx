@@ -434,7 +434,7 @@ export default async function PropertyDetailsPage({ params }: PropertyDetailsPag
         ) : null}
       </section>
 
-      <div className="relative overflow-hidden">
+      <div className="relative [--property-content-bottom-space:3rem]">
         <PropertyFloatingAgentSidebar>
           <PropertyAgentContactCard
             agentImageSrc={property.team_image}
@@ -576,7 +576,7 @@ export default async function PropertyDetailsPage({ params }: PropertyDetailsPag
         <PropertyLifeAroundArea areaName={propertyLocation || property.location || property.city} />
 
         <section className="w-full">
-          <div className="mx-auto max-w-[1440px] px-6 py-10 sm:px-8 lg:px-8 lg:py-12 lg:pr-[calc(360px+40px+2rem)]">
+          <div className="mx-auto max-w-[1440px] px-6 py-10 sm:px-8 lg:px-8 lg:pt-12 lg:pb-[var(--property-content-bottom-space)] lg:pr-[calc(360px+40px+2rem)]">
             <article className="max-w-5xl">
               <h2 className="text-2xl font-semibold text-slate-950">About This Property</h2>
               <p className="mt-4 text-sm leading-7 text-slate-700">

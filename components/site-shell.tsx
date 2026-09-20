@@ -25,7 +25,7 @@ export function SiteShell({ children, footerTools, navigation }: SiteShellProps)
   const homepageRailPadding = isHomePage ? "lg:pl-24 xl:pl-28 2xl:pl-0" : "";
 
   return (
-    <div className="relative isolate flex min-h-screen flex-col overflow-hidden">
+    <div className="relative isolate flex min-h-screen flex-col overflow-clip">
       <div className="absolute inset-0 -z-10 bg-white" />
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white shadow-[0_12px_36px_rgba(15,23,42,0.18)]">
