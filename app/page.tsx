@@ -2,7 +2,6 @@ import Link from "next/link";
 import { DragScrollCarousel } from "@/components/drag-scroll-carousel";
 import PropertyCardS1 from "@/components/estate/propertyCard.s1";
 import { HeroBackgroundVideo } from "@/components/hero-background-video";
-import { logica } from "@/logica";
 import {
   formatCountLabel,
   fetchBlogs,
@@ -374,20 +373,15 @@ function LinkedSectionTitle({
 }
 
 export default async function Home() {
-  const [premiumPayload, recentPayload, blogsPayload, googleBusinessReviews] = await Promise.all([
+  const [premiumPayload, recentPayload, blogsPayload] = await Promise.all([
     fetchPremiumProperties(1),
     fetchPropertyListings({ page: 1 }),
     fetchBlogs(1),
-    logica.thirdparty.googlebusiness.getReviews({
-      businessName: "Property In Nepal Pvt. Ltd",
-      locationId: "05028945782146218024",
-      pageSize: 6,
-    }),
   ]);
   const premiumListings = premiumPayload.data ?? [];
   const recentListings = recentPayload.items ?? [];
   const latestBlogs = (blogsPayload.data ?? []).slice(0, 8);
-  const clientReviews = googleBusinessReviews.length > 0 ? googleBusinessReviews : fallbackClientReviews;
+  const clientReviews = fallbackClientReviews;
   const featuredListings = premiumListings
     .filter((property) => property.is_featured === "1")
     .slice(0, 8);

@@ -1,4 +1,4 @@
-import { logica } from "@/logica";
+import { estate } from "@neup/logica/estate";
 
 export type PropertyFeature = {
   name: string;
@@ -457,10 +457,6 @@ function getCategoryFilter(categorySlug: FilterPropertyListingsArgs["categorySlu
   return categoryBySlug[categorySlug];
 }
 
-function extractCodeFromSlug(slug: string) {
-  return slug.match(/-(\d+)$/)?.[1] ?? null;
-}
-
 async function searchProperties({
   categorySlug,
   page,
@@ -469,7 +465,7 @@ async function searchProperties({
   const { getPurposeApiValue } = await import("@/lib/property-taxonomy");
   const currentPage = Math.max(1, page);
 
-  return logica.estate.property.search({
+  return estate.property.search({
     category: getCategoryFilter(categorySlug),
     limit: SEARCH_PAGE_SIZE,
     page: currentPage,
@@ -516,27 +512,37 @@ export async function fetchPropertyListings({
 }
 
 export async function fetchPropertyBySlug(slug: string) {
-  const code = extractCodeFromSlug(slug);
-
-  if (code) {
-    const response = await logica.estate.property.getByCode(code);
-    const body = asRecord(response.body);
-    if (response.ok && body.property) return mapProperty(body.property);
-  }
-
-  const response = await logica.estate.property.search({
-    limit: 1,
-    q: slug,
+  // Slug suffixes contain legacy listing codes, not the estate API's UUIDs.
+  // Search indexes title words, so remove the numeric suffixes and hyphens.
+  const search = slug.replace(/(?:-\d+)+$/, "").replace(/-/g, " ").trim();
+  if (!search) return null;
+  const response = await estate.property.search({
+    limit: 20,
+    search,
   });
+  if (!response.ok) {
+    throw new Error(`Failed to find property: ${response.status}`);
+  }
   const body = asRecord(response.body);
   const properties = Array.isArray(body.properties) ? body.properties : [];
   const exactMatch = properties.find((property) => asRecord(property).slug === slug);
 
-  return exactMatch ? mapProperty(exactMatch) : null;
+  if (!exactMatch) return null;
+
+  const matchedProperty = asRecord(exactMatch);
+  const matchedPropertyId = matchedProperty.id;
+  if (typeof matchedPropertyId !== "string" && typeof matchedPropertyId !== "number") {
+    return mapProperty(exactMatch);
+  }
+
+  const detailResponse = await estate.property(String(matchedPropertyId)).get();
+  const detailBody = asRecord(detailResponse.body);
+  const detailRecord = detailBody.property ?? detailBody.data;
+  return detailResponse.ok && detailRecord ? mapProperty(detailRecord) : mapProperty(exactMatch);
 }
 
 export async function fetchPremiumProperties(page = 1) {
-  const response = await logica.estate.property.search({
+  const response = await estate.property.search({
     limit: 15,
     page: Math.max(1, page),
   });
@@ -550,15 +556,17 @@ export async function fetchPremiumProperties(page = 1) {
 }
 
 export async function fetchBlogs(page: number) {
-  const response = await fetch(`${API_BASE}/blogs?page=${page}`, {
-    cache: "no-store",
-  });
+  try {
+    const response = await fetch(`${API_BASE}/blogs?page=${page}`, {
+      cache: "no-store",
+    });
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch blogs: ${response.status}`);
+    if (!response.ok) return { data: [], meta: undefined } satisfies BlogsResponse;
+
+    return (await response.json()) as BlogsResponse;
+  } catch {
+    return { data: [], meta: undefined } satisfies BlogsResponse;
   }
-
-  return (await response.json()) as BlogsResponse;
 }
 
 export async function fetchBlogBySlug(slug: string) {
