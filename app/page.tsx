@@ -527,9 +527,9 @@ export default async function Home() {
         </div>
 
         <DragScrollCarousel className="no-scrollbar -mx-6 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth scroll-pl-6 px-6 pb-4 sm:-mx-8 sm:scroll-pl-8 sm:px-8">
-          {premiumPreviewListings.map((property) => (
+          {premiumPreviewListings.map((property, index) => (
             <PremiumPropertyCard
-              key={property.id}
+              key={`${property.id}-${index}`}
               property={property}
               className="w-[82vw] max-w-[360px] shrink-0 snap-start sm:w-[46vw] lg:w-[31vw] xl:w-[320px]"
             />
@@ -572,9 +572,9 @@ export default async function Home() {
           </div>
 
           <DragScrollCarousel className="no-scrollbar -mx-6 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth scroll-pl-6 px-6 pb-4 sm:-mx-8 sm:scroll-pl-8 sm:px-8">
-            {recentPreviewListings.map((property) => (
+            {recentPreviewListings.map((property, index) => (
               <PremiumPropertyCard
-                key={property.id}
+                key={`${property.id}-${index}`}
                 property={property}
                 className="w-[82vw] max-w-[360px] shrink-0 snap-start sm:w-[46vw] lg:w-[31vw] xl:w-[320px]"
               />

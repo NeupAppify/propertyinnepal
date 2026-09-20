@@ -47,10 +47,10 @@ export default async function RootLayout({
           {children}
         </SiteShell>
         <script
-          src="https://neupgroup.com/analytics/bridge/sdk.v1/tracker?collect=pageview,clicks,keyboard,forms,linkclicks,selection,scroll,geolocation"
+          src="https://neupgroup.com/analytics/bridge/sdk.v1/tracker?collect=pageview,clicks,keyboard,forms,linkclicks,selection,geolocation"
           data-context-id={signedContextId}
           data-project-id="cmu988ag500pvuap9811hrnbk"
-          data-collect="pageview,clicks,keyboard,forms,linkclicks,selection,scroll,geolocation"
+          data-collect="pageview,clicks,keyboard,forms,linkclicks,selection,geolocation"
           data-cookie-keys={"[]"}
           data-server-fields={JSON.stringify({})}
           defer

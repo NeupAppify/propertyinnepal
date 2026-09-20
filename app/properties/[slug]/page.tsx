@@ -644,9 +644,9 @@ export default async function PropertyDetailsPage({ params }: PropertyDetailsPag
               autoScrollIntervalMs={6500}
               className="no-scrollbar -mx-6 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth scroll-pl-6 px-6 pb-4 sm:-mx-8 sm:scroll-pl-8 sm:px-8"
             >
-              {recommendedProperties.map((recommendedProperty) => (
+              {recommendedProperties.map((recommendedProperty, index) => (
                 <div
-                  key={recommendedProperty.id}
+                  key={`${recommendedProperty.id}-${index}`}
                   className="w-[82vw] max-w-[360px] shrink-0 snap-start sm:w-[46vw] lg:w-[31vw] xl:w-[320px]"
                 >
                   <RecommendedPropertyCard property={recommendedProperty} />

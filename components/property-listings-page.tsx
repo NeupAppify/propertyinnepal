@@ -65,9 +65,9 @@ export function PropertyListingsPage({
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-            {properties.map((property) => (
+            {properties.map((property, index) => (
               <PropertyCardS1
-                key={property.id}
+                key={`${property.id}-${index}`}
                 className="h-full shadow-none"
                 href={`/properties/${property.id}`}
                 imageAlt={getDisplayValue(property.name)}
