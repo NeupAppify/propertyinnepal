@@ -144,21 +144,25 @@
             "@comment:projectId": "Unique identifier for the project within the account module."
         }
     ],
-    "permissions": [],
-    "@comment:permissions": "List of permissions required by the application. Each permission should include a name, description, and whether it is required.",
-    "@comment:storage": "Configuration for the application's storage system.",
     "platforms": [
         {
             "type": "web",
             "@comment:type": "Specifies the platform type. Options include web, android, and ios.",
             "exists": true,
             "@comment:exists": "Indicates if the web platform is supported by the application.",
-            "domain": "https://neupgroup.com",
+            "domain": "neupgroup.com",
             "@comment:domain": "Domain at which web application will be hosted.",
             "basepath": "/",
             "@comment:basepath": "Base path for the web application. This is the root path from which the application will be served, dont define this if its hosted on a single subdomain or domain.",
             "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
-            "@comment:projectId": "Unique identifier for the project within the web platform."
+            "@comment:projectId": "Unique identifier for the project within the web platform.",
+            "permissions": [
+                "geolocation",
+                "notifications",
+                "camera",
+                "microphone"
+            ],
+            "@comment:permissions": "Specifies the permissions required by the web application. Each permission should be a string representing the type of permission needed."
         },
         {
             "type": "android",
@@ -166,7 +170,14 @@
             "exists": false,
             "@comment:exists": "Indicates if the Android platform is supported by the application.",
             "packageName": "com.neupgroup.app",
-            "@comment:packageName": "The package name for the Android application."
+            "@comment:packageName": "The package name for the Android application.",
+            "permissions": [
+                "android.permission.ACCESS_FINE_LOCATION",
+                "android.permission.CAMERA",
+                "android.permission.RECORD_AUDIO",
+                "android.permission.INTERNET"
+            ],
+            "@comment:permissions": "Specifies the permissions required by the Android application. Each permission should be a string representing the type of permission needed."
         },
         {
             "type": "ios",
@@ -174,7 +185,14 @@
             "exists": false,
             "@comment:exists": "Indicates if the iOS platform is supported by the application.",
             "bundleIdentifier": "com.neupgroup.app",
-            "@comment:bundleIdentifier": "The bundle identifier for the iOS application."
+            "@comment:bundleIdentifier": "The bundle identifier for the iOS application.",
+            "permissions": [
+                "NSLocationWhenInUseUsageDescription",
+                "NSCameraUsageDescription",
+                "NSMicrophoneUsageDescription",
+                "NSPhotoLibraryUsageDescription"
+            ],
+            "@comment:permissions": "Specifies the permissions required by the iOS application. Each permission should be a string representing the type of permission needed."
         }
     ],
     "assets": {
