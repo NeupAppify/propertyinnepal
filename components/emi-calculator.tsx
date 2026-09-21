@@ -8,7 +8,7 @@ Interactive EMI calculator UI for the `/tools/emi-calculator` page.
 ::end
 */
 import { useId, useState } from "react";
-import { calculateEmiPaymentBreakdown } from "@neup/core/helpers/emi";
+import { calculateEmiPaymentBreakdown } from "@/lib/emi-calculator";
 
 const currencyFormatter = new Intl.NumberFormat("en-NP", {
   currency: "NPR",
