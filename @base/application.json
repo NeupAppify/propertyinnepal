@@ -98,14 +98,6 @@
             "@comment:projectId": "Unique identifier for the project within the sites module."
         },
         {
-            "name": "database",
-            "@comment:name": "Database module for data storage and retrieval.",
-            "isRequired": true,
-            "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-            "type": "postgresql",
-            "@comment:type": "Specifies the type of database used in the application."
-        },
-        {
             "name": "neup.drive",
             "@comment:name": "File storage module for handling file uploads and downloads.",
             "isRequired": true,
@@ -138,7 +130,7 @@
             "@comment:name": "Account module for managing user accounts and authentication.",
             "isRequired": true,
             "@comment:isRequired": "Indicates if the module is mandatory for the application.",
-            "accountSystem": "neupId/emailpass/userpass",
+            "accountSystem": "neupId.remote",
             "@comment:accountSystem": "Specifies the account system used for user authentication and management.",
             "projectId": "0a40228e-a331-4c83-8ef4-6a443a84a8db",
             "@comment:projectId": "Unique identifier for the project within the account module."
@@ -169,9 +161,7 @@
             "@comment:projectId": "Unique identifier for the project within the web platform.",
             "permissions": [
                 "geolocation",
-                "notifications",
-                "camera",
-                "microphone"
+                "notifications"
             ],
             "@comment:permissions": "Specifies the permissions required by the web application. Each permission should be a string representing the type of permission needed."
         },
