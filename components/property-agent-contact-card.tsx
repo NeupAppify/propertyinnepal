@@ -400,7 +400,7 @@ export function PropertyAgentContactCard({
               value={visitName}
               onChange={(event) => setVisitName(event.target.value)}
               required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <label className="block">
@@ -412,7 +412,7 @@ export function PropertyAgentContactCard({
               value={visitPhone}
               onChange={(event) => setVisitPhone(event.target.value)}
               required={visitNeedsContact}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <label className="block">
@@ -424,7 +424,7 @@ export function PropertyAgentContactCard({
               value={visitEmail}
               onChange={(event) => setVisitEmail(event.target.value)}
               required={visitNeedsContact}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <label className="block">
@@ -435,7 +435,7 @@ export function PropertyAgentContactCard({
               placeholder="Add any visit notes"
               value={visitMessage}
               onChange={(event) => setVisitMessage(event.target.value)}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <button
@@ -458,7 +458,7 @@ export function PropertyAgentContactCard({
               value={inquiryName}
               onChange={(event) => setInquiryName(event.target.value)}
               required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <label className="block">
@@ -470,7 +470,7 @@ export function PropertyAgentContactCard({
               value={inquiryPhone}
               onChange={(event) => setInquiryPhone(event.target.value)}
               required={inquiryNeedsContact}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <label className="block">
@@ -482,7 +482,7 @@ export function PropertyAgentContactCard({
               value={inquiryEmail}
               onChange={(event) => setInquiryEmail(event.target.value)}
               required={inquiryNeedsContact}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <label className="block">
@@ -494,7 +494,7 @@ export function PropertyAgentContactCard({
               value={inquiryMessage}
               onChange={(event) => setInquiryMessage(event.target.value)}
               required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
             />
           </label>
           <button
@@ -682,7 +682,7 @@ export function PropertyAgentContactCard({
                 value={visitName}
                 onChange={(event) => setVisitName(event.target.value)}
                 required
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <label className="block">
@@ -694,7 +694,7 @@ export function PropertyAgentContactCard({
                 value={visitPhone}
                 onChange={(event) => setVisitPhone(event.target.value)}
                 required={visitNeedsContact}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <label className="block">
@@ -706,7 +706,7 @@ export function PropertyAgentContactCard({
                 value={visitEmail}
                 onChange={(event) => setVisitEmail(event.target.value)}
                 required={visitNeedsContact}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <label className="block">
@@ -717,7 +717,7 @@ export function PropertyAgentContactCard({
                 placeholder="Add any visit notes"
                 value={visitMessage}
                 onChange={(event) => setVisitMessage(event.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <button
@@ -741,7 +741,7 @@ export function PropertyAgentContactCard({
                 value={inquiryName}
                 onChange={(event) => setInquiryName(event.target.value)}
                 required
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <label className="block">
@@ -753,7 +753,7 @@ export function PropertyAgentContactCard({
                 value={inquiryPhone}
                 onChange={(event) => setInquiryPhone(event.target.value)}
                 required={inquiryNeedsContact}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <label className="block">
@@ -765,7 +765,7 @@ export function PropertyAgentContactCard({
                 value={inquiryEmail}
                 onChange={(event) => setInquiryEmail(event.target.value)}
                 required={inquiryNeedsContact}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <label className="block">
@@ -777,7 +777,7 @@ export function PropertyAgentContactCard({
                 value={inquiryMessage}
                 onChange={(event) => setInquiryMessage(event.target.value)}
                 required
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
               />
             </label>
             <button

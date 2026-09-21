@@ -424,7 +424,7 @@ export default async function Home() {
                 name="q"
                 type="search"
                 placeholder="Search by location or property..."
-                className="min-w-0 flex-1 rounded-xl bg-transparent px-4 py-3 text-sm text-slate-950 outline-none placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-sky-400"
+                className="min-w-0 flex-1 rounded-lg bg-transparent px-3 py-2 text-sm text-slate-950 outline-none placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-sky-400"
               />
               <button
                 type="submit"

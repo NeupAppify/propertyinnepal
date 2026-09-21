@@ -485,18 +485,18 @@ export default async function PropertyDetailsPage({ params }: PropertyDetailsPag
               <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
               <p>Area: {property.area}</p>
             </div>
+
+            <PropertyAgentContactCard
+              agentImageSrc={property.team_image}
+              agentName={agentName}
+              agentRole={agentRole}
+              phone={PROPERTY_AGENT_FALLBACK.phone}
+              email={PROPERTY_AGENT_FALLBACK.email}
+              display="mobile"
+              mobileClassName="pt-6"
+            />
           </div>
         </section>
-
-        <PropertyAgentContactCard
-          agentImageSrc={property.team_image}
-          agentName={agentName}
-          agentRole={agentRole}
-          phone={PROPERTY_AGENT_FALLBACK.phone}
-          email={PROPERTY_AGENT_FALLBACK.email}
-          display="mobile"
-          mobileClassName="mx-auto max-w-[1440px] px-6 pb-8 pt-6"
-        />
 
         <section className="w-full">
           <div className="mx-auto max-w-[1440px] px-6 py-8 sm:px-8 lg:px-8 lg:py-10 lg:pr-[calc(360px+40px+2rem)]">

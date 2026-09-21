@@ -74,7 +74,7 @@ export default function ContactPage() {
                 Full name
                 <input
                   type="text"
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
                   placeholder="Your name"
                 />
               </label>
@@ -82,7 +82,7 @@ export default function ContactPage() {
                 Email address
                 <input
                   type="email"
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
                   placeholder="you@example.com"
                 />
               </label>
@@ -93,7 +93,7 @@ export default function ContactPage() {
                 Budget
                 <input
                   type="text"
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
                   placeholder="Rs 1.5 Cr - Rs 3 Cr"
                 />
               </label>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                 Timeline
                 <input
                   type="text"
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
                   placeholder="This month, this quarter, etc."
                 />
               </label>
@@ -111,7 +111,7 @@ export default function ContactPage() {
               What are you looking for?
               <textarea
                 rows={6}
-                className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
                 placeholder="Tell us the location, property type, and anything else we should know."
               />
             </label>

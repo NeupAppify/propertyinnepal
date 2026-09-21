@@ -57,7 +57,7 @@ function parseInputValue(value: string) {
 
 function Field({ id, label, onChange, step = 1, suffix, value }: FieldProps) {
   return (
-    <label className="grid gap-3" htmlFor={id}>
+    <label className="grid gap-2" htmlFor={id}>
       <span className="text-sm font-medium text-slate-700">{label}</span>
       <div className="relative">
         <input
@@ -69,10 +69,10 @@ function Field({ id, label, onChange, step = 1, suffix, value }: FieldProps) {
           onChange={(event) => {
             onChange(parseInputValue(event.target.value));
           }}
-          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 pr-16 text-base text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
+          className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 pr-14 text-sm text-slate-950 outline-none transition focus:border-brand focus:ring-4 focus:ring-sky-100"
         />
         {suffix ? (
-          <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-medium text-slate-400">
+          <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-slate-400">
             {suffix}
           </span>
         ) : null}
